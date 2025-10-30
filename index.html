@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Question Paper Generator</h1>
+        <form id="paperForm">
+            <label for="subject">Select Subject:</label>
+            <select id="subject" required>
+                <option value="computer9">Computer 9th</option>
+            </select>
+
+            <fieldset>
+                <legend>Select Chapters:</legend>
+                <label><input type="checkbox" name="chapters" value="ch1"> Chapter 1</label>
+                <label><input type="checkbox" name="chapters" value="ch2"> Chapter 2</label>
+                <label><input type="checkbox" name="chapters" value="ch3"> Chapter 3</label>
+                <label><input type="checkbox" name="chapters" value="ch4"> Chapter 4</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Select Paper Type:</legend>
+                <label><input type="radio" name="type" value="objective" checked> Objective</label>
+                <label><input type="radio" name="type" value="subjective"> Subjective</label>
+                <label><input type="radio" name="type" value="both"> Both</label>
+            </fieldset>
+
+            <button type="submit">Generate Paper</button>
+        </form>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
