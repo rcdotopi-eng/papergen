@@ -13,6 +13,53 @@ document.getElementById('paperForm').addEventListener('submit', function(e) {
     generatePaper(subject, chapters, paperType);
 });
 
+// Utility to shuffle arrays
+function shuffleArray(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+// Function to add MCQs with boxes
+function addMCQ(doc, questionNumber, text, pageWidth, margin, y) {
+    const lineHeight = 7;
+    const lines = doc.splitTextToSize(text, pageWidth - 2*margin - 10);
+
+    // Check page overflow
+    if (y + lines.length*lineHeight + 20 > 280) {
+        doc.addPage();
+        y = 20;
+    }
+
+    // Draw question
+    doc.setFont('times', 'normal');
+    doc.text(`${questionNumber}. ${lines[0]}`, margin, y);
+    y += lineHeight;
+
+    // Draw options with boxes
+    for (let i = 1; i < lines.length; i++) {
+        if (y + lineHeight > 280) { doc.addPage(); y = 20; }
+        doc.rect(margin, y-5, 5, 5);       // box
+        doc.text(lines[i], margin + 8, y);
+        y += lineHeight;
+    }
+
+    y += 5; // spacing after question
+    return y;
+}
+
+// Function to add Subjective questions
+function addSubjectiveQuestion(doc, questionNumber, text, pageWidth, margin, y, lineHeight=8) {
+    const lines = doc.splitTextToSize(text, pageWidth - 2*margin);
+    if (y + lines.length*lineHeight + 10 > 280) {
+        doc.addPage();
+        y = 20;
+    }
+    doc.setFont('times', 'normal');
+    doc.text(`${questionNumber}. ${lines.join("\n")}`, margin, y);
+    y += lines.length*lineHeight + 5;
+    return y;
+}
+
+// Main Paper Generator
 function generatePaper(subject, selectedChapters, paperType) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'mm', 'a4');
@@ -20,110 +67,95 @@ function generatePaper(subject, selectedChapters, paperType) {
     const margin = 20;
     let y = 20;
 
-    // ---------------- HEADER ----------------
+    // Header
     doc.setFontSize(16);
     doc.setFont('times', 'bold');
-    doc.text('Sardar Shah Mohammad Khan Late Government Boys High School, Ghel Topi', pageWidth / 2, y, { align: 'center' });
-    y += 8;
-    doc.setFontSize(14);
-    doc.text('Grade 9 Computer Examination', pageWidth / 2, y, { align: 'center' });
+    doc.text('Sardar Shah Mohammad Khan Late Government Boys High School, Ghel Topi', pageWidth/2, y, {align: 'center'});
     y += 10;
     doc.setFontSize(12);
     doc.setFont('times', 'normal');
     doc.text(`Name: _____________________     Roll No: _______     Date: __________`, margin, y);
-    y += 12;
-    doc.text('Time Allowed: 2 hours', margin, y);
-    y += 10;
+    y += 15;
 
-    // ---------------- OBJECTIVE SECTION ----------------
-if (paperType === 'objective' || paperType === 'both') {
-    doc.setFontSize(14);
-    doc.setFont('times', 'bold');
-    doc.text('Section A: Objective Paper (15 marks)', margin, y);
-    y += 10;
+    // Objective Paper
+    if (paperType === 'objective' || paperType === 'both') {
+        doc.setFontSize(14);
+        doc.setFont('times', 'bold');
+        doc.text('Section A: Objective Paper (15 marks)', pageWidth/2, y, {align: 'center'});
+        y += 8;
 
-    doc.setFontSize(11);
-    doc.setFont('times', 'normal');
-    doc.text('Instructions: Attempt ALL questions. Tick the correct option.', margin, y);
-    y += 10;
+        // Instructions
+        doc.setFontSize(11);
+        doc.setFont('times', 'normal');
+        doc.text([
+            "Instructions:",
+            "1. Attempt all 10 multiple choice questions.",
+            "2. Fill the box for your selected answer."
+        ], margin, y);
+        y += 20;
 
-    let mcqs = [];
-    selectedChapters.forEach(ch => mcqs = mcqs.concat(QUESTIONS[subject][ch].objective));
-    mcqs = shuffleArray(mcqs).slice(0, 10);
+        // Collect MCQs
+        let mcqs = [];
+        selectedChapters.forEach(ch => mcqs = mcqs.concat(QUESTIONS[subject][ch].objective));
+        mcqs = shuffleArray(mcqs).slice(0, 10);
 
-    mcqs.forEach((q, i) => {
-        // Split question and options
-        const lines = doc.splitTextToSize(q, pageWidth - 2*margin - 10);
-        if (y + lines.length*7 > 270) { doc.addPage(); y = 20; }
-        doc.text(`${i+1}. ${lines[0]}`, margin, y);
-        y += 7;
-
-        const optionLines = lines.slice(1); // assume options are in separate lines
-        optionLines.forEach(opt => {
-            if (y > 270) { doc.addPage(); y = 20; }
-            doc.rect(margin, y-4, 5, 5);           // small box
-            doc.text(opt, margin + 8, y);         // option text
-            y += 7;
+        mcqs.forEach((q, i) => {
+            y = addMCQ(doc, i+1, q, pageWidth, margin, y);
         });
 
-        y += 5; // extra space after each question
-    });
+        // Add page break before Subjective
+        if(paperType === 'both') { doc.addPage(); y = 20; }
+    }
 
-    if (paperType === 'both') { doc.addPage(); y = 20; }
-}
-
-
-    // ---------------- SUBJECTIVE SECTION ----------------
+    // Subjective Paper
     if (paperType === 'subjective' || paperType === 'both') {
         doc.setFontSize(14);
         doc.setFont('times', 'bold');
-        doc.text('Section B: Subjective Paper (35 marks)', margin, y);
+        doc.text('Section B: Subjective Paper (35 marks)', pageWidth/2, y, {align: 'center'});
         y += 8;
+
+        // Instructions
         doc.setFontSize(11);
         doc.setFont('times', 'normal');
-        doc.text('Instructions:', margin, y);
-        y += 6;
-        doc.text('- Short Questions: Attempt ALL questions. Each carries 2 marks.', margin + 5, y);
-        y += 6;
-        doc.text('- Long Questions: Attempt ANY 3 questions. Each carries 5 marks.', margin + 5, y);
-        y += 10;
+        doc.text([
+            "Instructions:",
+            "1. Answer all short questions.",
+            "2. Attempt any 3 long questions.",
+            "3. Do not write answers in this question paper (for printing purposes)."
+        ], margin, y);
+        y += 20;
 
         // Short Questions
         let shortQs = [];
         selectedChapters.forEach(ch => shortQs = shortQs.concat(QUESTIONS[subject][ch].short));
         shortQs = shuffleArray(shortQs).slice(0, 10);
 
+        doc.setFontSize(12);
         doc.setFont('times', 'bold');
         doc.text('Short Questions (2 marks each)', margin, y);
         y += 8;
         doc.setFont('times', 'normal');
-        shortQs.forEach((q, i) => {
-            if (y > 270) { doc.addPage(); y = 20; }
-            doc.text(`${i + 1}. ${q}`, margin, y);
-            y += 12;
+
+        shortQs.forEach((q,i) => {
+            y = addSubjectiveQuestion(doc, i+1, q, pageWidth, margin, y);
         });
+
         y += 5;
 
         // Long Questions
         let longQs = [];
         selectedChapters.forEach(ch => longQs = longQs.concat(QUESTIONS[subject][ch].long));
-        longQs = shuffleArray(longQs).slice(0, 5); // pick 5
+        longQs = shuffleArray(longQs).slice(0,5);
+
         doc.setFont('times', 'bold');
         doc.text('Long Questions (Attempt any 3, 5 marks each)', margin, y);
         y += 8;
         doc.setFont('times', 'normal');
-        longQs.forEach((q, i) => {
-            if (y > 270) { doc.addPage(); y = 20; }
-            doc.text(`${i + 1}. ${q}`, margin, y);
-            y += 15;
+
+        longQs.forEach((q,i) => {
+            y = addSubjectiveQuestion(doc, i+1, q, pageWidth, margin, y);
         });
     }
 
-    // Save PDF
     doc.save(`${subject}_QuestionPaper.pdf`);
-}
-
-// ---------------- HELPER ----------------
-function shuffleArray(array) {
-    return array.sort(() => Math.random() - 0.5);
 }
