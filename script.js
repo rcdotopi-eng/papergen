@@ -40,34 +40,33 @@ if (paperType === 'objective' || paperType === 'both') {
     doc.setFontSize(14);
     doc.setFont('times', 'bold');
     doc.text('Section A: Objective Paper (15 marks)', margin, y);
-    y += 8;
-    doc.setFontSize(11);
-    doc.setFont('times', 'normal');
-    doc.text('Instructions: Attempt ALL questions. Each question carries 1.5 marks. Tick the correct option.', margin, y);
     y += 10;
 
-    // Gather MCQs from selected chapters
+    doc.setFontSize(11);
+    doc.setFont('times', 'normal');
+    doc.text('Instructions: Attempt ALL questions. Tick the correct option.', margin, y);
+    y += 10;
+
     let mcqs = [];
     selectedChapters.forEach(ch => mcqs = mcqs.concat(QUESTIONS[subject][ch].objective));
     mcqs = shuffleArray(mcqs).slice(0, 10);
 
     mcqs.forEach((q, i) => {
-        if (y > 250) { doc.addPage(); y = 20; }
-        const lines = doc.splitTextToSize(q, pageWidth - 2*margin - 30);
-        doc.text(`${i + 1}. ${lines[0]}`, margin, y);
+        // Split question and options
+        const lines = doc.splitTextToSize(q, pageWidth - 2*margin - 10);
+        if (y + lines.length*7 > 270) { doc.addPage(); y = 20; }
+        doc.text(`${i+1}. ${lines[0]}`, margin, y);
         y += 7;
-        // Draw boxes for options
-        const options = ['(a)', '(b)', '(c)', '(d)'];
-        for (let j = 0; j < options.length; j++) {
-            if (lines.length > 1) { 
-                doc.text(lines.slice(1).join(' '), margin + 5, y);
-            }
-            doc.rect(margin, y-4, 5, 5); // box
-            const optionText = q.split('\n')[j+1] || '';
-            doc.text(`${options[j]} ${optionText.replace(options[j],'')}`, margin + 8, y);
+
+        const optionLines = lines.slice(1); // assume options are in separate lines
+        optionLines.forEach(opt => {
+            if (y > 270) { doc.addPage(); y = 20; }
+            doc.rect(margin, y-4, 5, 5);           // small box
+            doc.text(opt, margin + 8, y);         // option text
             y += 7;
-        }
-        y += 5;
+        });
+
+        y += 5; // extra space after each question
     });
 
     if (paperType === 'both') { doc.addPage(); y = 20; }
