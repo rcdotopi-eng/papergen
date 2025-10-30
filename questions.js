@@ -4,106 +4,91 @@ const QUESTIONS = {
             objective: [
                 "What does ASCII stand for?\n(a) American Standard Code for Information Interchange\n(b) Advanced Standard Code for Information Interchange\n(c) American Standard Communication for Information Interchange\n(d) Advanced Standard Communication for Information Interchange",
                 "Which of the following numbers is a valid binary number?\n(a) 1101102\n(b) 11011\n(c) 110.11\n(d) 1101A",
-                "How many bits are used in standard ASCII encoding?\n(a) 7 bits\n(b) 8 bits\n(c) 16 bits\n(d) 32 bits",
-                "Which is a key advantage of Unicode over ASCII?\n(a) It uses fewer bits\n(b) Represents many languages\n(c) Backward compatible with binary\n(d) Specific to English",
-                "How many bytes store a typical integer?\n(a) 1\n(b) 2\n(c) 4\n(d) 8",
-                "Difference between signed and unsigned integers?\n(a) Unsigned can't be negative\n(b) Signed has larger range\n(c) Unsigned is floating-point\n(d) Signed only positive",
-                "In single precision, bits for exponent?\n(a) 23\n(b) 8\n(c) 11\n(d) 52",
-                "Approximate range for single-precision floating-point numbers?\n(a) 1.4 × 10⁻⁴⁵ to 3.4 × 10³⁸\n(b) 1.4 × 10⁻³²⁴ to 3.4 × 10³⁰⁸\n(c) 4.9 × 10⁻³² to 1.8 × 10³⁸\n(d) 4.9 × 10⁻³²⁴ to 1.8 × 10³⁰⁸",
-                "Tiny dots that make up an image are called?\n(a) Pixels\n(b) Bits\n(c) Bytes\n(d) Nodes",
-                "In RGB model, RGB stands for?\n(a) Red, Green, Blue\n(b) Red, Gray, Black\n(c) Right, Green, Blue\n(d) Red, Green, Brown"
+                "How many bits are used in the standard ASCII encoding?\n(a) 7 bits\n(b) 8 bits\n(c) 16 bits\n(d) 32 bits",
+                "Which of the following is a key advantage of Unicode over ASCII?\n(a) It uses fewer bits per character\n(b) It can represent characters from many different languages\n(c) It is backward compatible with binary\n(d) It is specific to the English language",
+                "How many bytes are used to store a typical integer?\n(a) 1 byte\n(b) 2 bytes\n(c) 4 bytes\n(d) 8 bytes",
+                "What is the primary difference between signed and unsigned integers?\n(a) Unsigned integers cannot be negative\n(b) Signed integers have a larger range\n(c) Unsigned integers are stored in floating-point format\n(d) Signed integers are only used for positive numbers",
+                "In single precision, how many bits are used for the exponent?\n(a) 23 bits\n(b) 8 bits\n(c) 11 bits\n(d) 52 bits",
+                "What is the approximate range of values for single-precision floating-point numbers?\n(a) 1.4 × 10⁻⁴⁵ to 3.4 × 10³⁸\n(b) 1.4 × 10⁻³²⁴ to 3.4 × 10³⁰⁸\n(c) 4.9 × 10⁻³² to 1.8 × 10³⁸\n(d) 4.9 × 10⁻³²⁴ to 1.8 × 10³⁰⁸",
+                "What are the tiny dots that make up an image called?\n(a) Pixels\n(b) Bits\n(c) Bytes\n(d) Nodes",
+                "In an RGB color model, what does RGB stand for?\n(a) Red, Green, Blue\n(b) Red, Gray, Black\n(c) Right, Green, Blue\n(d) Red, Green, Brown"
             ],
-            short: [
-                "What is the purpose of ASCII encoding?",
-                "Difference between ASCII and Unicode?",
-                "How does Unicode handle characters from multiple languages?",
-                "Range of unsigned 2-byte integer?",
-                "How is a negative integer represented in binary?",
-                "Benefit of using unsigned integers?",
-                "Effect of bits on integer range?",
-                "Why use whole numbers for non-negative quantities?",
-                "Range calculation for single precision floating-point?",
-                "Why understand floating-point limitations in scientific computing?"
+            shortQuestions: [
+                "What is the primary purpose of the ASCII encoding scheme?",
+                "Explain the difference between ASCII and Unicode.",
+                "How does Unicode handle characters from different languages?",
+                "What is the range of values for an unsigned 2-byte integer?",
+                "Explain how a negative integer is represented in binary.",
+                "What is the benefit of using unsigned integers?",
+                "How does the number of bits affect the range of integer values?",
+                "Why are whole numbers commonly used in computing for quantities that cannot be negative?",
+                "How is the range of floating-point numbers calculated for single precision?",
+                "Why is it important to understand the limitations of floating-point representation in scientific computing?"
             ],
-            long: [
-                "Explain Unicode encoding with examples from multiple languages and code points.",
-                "Describe in detail how integers are stored in memory.",
-                "Explain converting decimal integers to binary and vice versa, including negative numbers."
+            longQuestions: [
+                "Explain how characters are encoded using Unicode. Provide examples of characters from different languages and their corresponding Unicode code points.",
+                "Describe in detail how integers are stored in computer memory.",
+                "Explain the process of converting a decimal integer to its binary representation and vice versa. Include examples of both positive and negative numbers."
             ]
         },
         ch2: {
             objective: [
-                "Which Boolean expression is OR?\n(a) A · B\n(b) A + B\n(c) A\n(d) A ⊕ B",
-                "Dual of A · 0 = 0?\n(a) A + 1 = 1\n(b) A + 0 = A\n(c) A · 1 = A\n(d) A · 0 = 0",
-                "Logic gate true only if both inputs true?\n(a) OR\n(b) AND\n(c) XOR\n(d) NOT",
-                "Half-adder carry generated by?\n(a) XOR\n(b) AND\n(c) OR\n(d) NOT",
-                "Decimal equivalent of binary 1101?\n(a) 11\n(b) 12\n(c) 13\n(d) 14"
+                "Which of the following Boolean expressions represents the OR operation?\n(a) A · B\n(b) A + B\n(c) A\n(d) A ⊕ B",
+                "What is the dual of the Boolean expression A · 0 = 0?\n(a) A + 1 = 1\n(b) A + 0 = A\n(c) A · 1 = A\n(d) A · 0 = 0",
+                "Which logic gate outputs true only if both inputs are true?\n(a) OR gate\n(b) AND gate\n(c) XOR gate\n(d) NOT gate",
+                "In a half-adder circuit, the carry is generated by which operation?\n(a) XOR operation\n(b) AND operation\n(c) OR operation\n(d) NOT operation",
+                "What is the decimal equivalent of the binary number 1101?\n(a) 11\n(b) 12\n(c) 13\n(d) 14"
             ],
-            short: [
-                "Define a Boolean function with example.",
-                "Significance of truth table in digital logic?",
-                "Difference between analog and digital signals?",
-                "Function of NOT gate with truth table?",
-                "Purpose of Karnaugh map in simplifying Boolean expressions?"
+            shortQuestions: [
+                "Define a Boolean function and give an example.",
+                "What is the significance of the truth table in digital logic?",
+                "Explain the difference between analog and digital signals.",
+                "Describe the function of a NOT gate with its truth table.",
+                "What is the purpose of a Karnaugh map in simplifying Boolean expressions?"
             ],
-            long: [
-                "Explain usage of Boolean functions in computers.",
-                "Construct a truth table for a Boolean expression with example."
+            longQuestions: [
+                "Explain the usage of Boolean functions in computers.",
+                "Describe how to construct a truth table for a Boolean expression with an example."
             ]
         },
         ch3: {
             objective: [
-                "First step in troubleshooting?\n(a) Establish theory\n(b) Implement solution\n(c) Identify problem\n(d) Document findings",
-                "Why is troubleshooting important?\n(a) Saves money\n(b) Prevents professional help\n(c) Ensures smooth operation\n(d) Allows updates",
-                "Step involving theory about problem cause?\n(a) Test theory\n(b) Establish theory\n(c) Implement solution\n(d) Verify system",
-                "Next step after implementing solution?\n(a) Document findings\n(b) Test theory\n(c) Verify system\n(d) Plan action",
-                "Example of identifying a problem?\n(a) Test laptop battery\n(b) Plan replacement\n(c) Notice laptop off\n(d) Write replacement note",
-                "Importance of documenting findings?\n(a) Solve faster\n(b) Record reference\n(c) Efficient testing\n(d) Ensure solution",
-                "Purpose of plan of action?\n(a) Identify problem\n(b) Verify system\n(c) Determine cause\n(d) Decide steps",
-                "Why is troubleshooting important?\n(a) Keep hardware updated\n(b) Prevent software help\n(c) Ensure smooth systems\n(d) No updates needed",
-                "Troubleshooting prevents?\n(a) Need professional help\n(b) Software updates\n(c) Downtime\n(d) Regular maintenance",
-                "Example ensuring data integrity?\n(a) Identify software bug\n(b) Replace printer\n(c) Cooling pad\n(d) Update OS"
+                "What is the first step in the systematic process of troubleshooting?\n(a) Establish a Theory of Probable Cause\n(b) Implement the Solution\n(c) Identify Problem\n(d) Document Findings, Actions, and Outcomes",
+                "Why is effective troubleshooting important for maintaining systems?\n(a) It helps save money on repairs\n(b) It prevents the need for professional help\n(c) It ensures systems operate smoothly and efficiently\n(d) It allows for more frequent system updates"
             ],
-            short: [
-                "First step in troubleshooting and its importance?",
-                "Next step after identifying a problem?",
-                "Importance of testing a theory? Example?",
-                "Explain 'Implement the Solution' step.",
-                "Why verify system after solution?"
+            shortQuestions: [
+                "What is the first step in the systematic process of troubleshooting, and why is it important?",
+                "After identifying a problem, what is the next step in troubleshooting, and how does it help in resolving the issue?",
+                "Describe the importance of testing a theory during the troubleshooting process. Provide an example.",
+                "Explain what the 'Implement the Solution' step entails in troubleshooting.",
+                "Why is it necessary to verify full system functionality after implementing a solution?"
             ],
-            long: [
-                "Discuss importance of troubleshooting in smooth system operation.",
-                "Explain systematic process of troubleshooting step by step.",
-                "Case study: printer not printing, identify problem and theory.",
-                "Importance of documenting findings and actions.",
-                "Analyze how troubleshooting ensures data integrity, prevents downtime, improves security.",
-                "Describe software-related troubleshooting strategies.",
-                "Recognize hardware failures (RAM, HDD).",
-                "Importance of maintaining software and security.",
-                "Methods for malware removal and OS updates.",
-                "Compare different data backup methods."
+            longQuestions: [
+                "Discuss the importance of troubleshooting in maintaining the smooth operation of systems, especially computing systems.",
+                "Explain the systematic process of troubleshooting. Describe each step in detail.",
+                "Using a case study where a printer is not printing, explain how you would identify the problem and establish a theory of probable cause.",
+                "Discuss the importance of documenting findings, actions, and outcomes during the troubleshooting process.",
+                "Analyze the various ways troubleshooting is vital in computing systems, particularly in preventing downtime, ensuring data integrity, and improving security. Provide specific examples and scenarios to support your analysis."
             ]
         },
         ch4: {
             objective: [
-                "Function of an operating system?\n(a) Compiling\n(b) Managing hardware\n(c) Printing only\n(d) Designing websites",
+                "Which of the following is a function of an operating system?\n(a) Compiling programs\n(b) Managing hardware resources\n(c) Printing documents only\n(d) Designing websites",
                 "Which OS is open source?\n(a) Windows\n(b) Linux\n(c) macOS\n(d) MS-DOS",
-                "Purpose of virtual memory?\n(a) Store files\n(b) Extend RAM\n(c) Increase processor speed\n(d) Protect system",
-                "Which is NOT an OS?\n(a) Ubuntu\n(b) Windows 10\n(c) Microsoft Word\n(d) macOS",
-                "What does file system do?\n(a) Manage devices\n(b) Organize/store files\n(c) Monitor network\n(d) Install software"
+                "What is virtual memory used for?\n(a) Storing files permanently\n(b) Extending RAM using disk space\n(c) Increasing processor speed\n(d) Protecting the system from malware"
             ],
-            short: [
-                "Define an operating system and its purpose.",
-                "Difference between single-user and multi-user OS?",
-                "Role of process scheduler?",
-                "Difference between RAM and virtual memory?",
-                "How OS manages I/O devices?"
+            shortQuestions: [
+                "Define an operating system and its primary purpose.",
+                "Explain the difference between a single-user and multi-user operating system.",
+                "What is the role of a process scheduler in an operating system?",
+                "Describe the difference between RAM and virtual memory.",
+                "Explain how an OS manages input and output devices."
             ],
-            long: [
-                "Explain OS functions: memory, process, device management.",
-                "Advantages/disadvantages of open-source vs proprietary OS.",
-                "Describe computer booting process and OS role.",
-                "Explain and compare file systems (FAT32, NTFS, ext4)."
+            longQuestions: [
+                "Discuss the functions of an operating system in detail, including memory management, process scheduling, and device management.",
+                "Explain the advantages and disadvantages of open-source operating systems compared to proprietary OS.",
+                "Describe the booting process of a computer system and the role of the OS during startup.",
+                "Explain file systems and compare different types, such as FAT32, NTFS, and ext4."
             ]
         }
     }
