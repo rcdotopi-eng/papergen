@@ -8,29 +8,43 @@
 </head>
 <body>
     <div class="container">
-        <h1>Question Paper Generator</h1>
+        <h1>📄 Question Paper Generator</h1>
+        <p class="subtitle">Create printable school exam papers in seconds</p>
+
         <form id="paperForm">
-            <label for="subject">Select Subject:</label>
-            <select id="subject" required>
-                <option value="computer9">Computer 9th</option>
-            </select>
+            <!-- Subject Selection -->
+            <div class="form-section">
+                <label for="subject"><strong>1. Select Subject:</strong></label>
+                <select id="subject" required>
+                    <option value="computer9">Computer 9th</option>
+                </select>
+            </div>
 
-            <fieldset>
-                <legend>Select Chapters:</legend>
-                <label><input type="checkbox" name="chapters" value="ch1"> Chapter 1</label>
-                <label><input type="checkbox" name="chapters" value="ch2"> Chapter 2</label>
-                <label><input type="checkbox" name="chapters" value="ch3"> Chapter 3</label>
-                <label><input type="checkbox" name="chapters" value="ch4"> Chapter 4</label>
-            </fieldset>
+            <!-- Chapters Selection -->
+            <div class="form-section">
+                <label><strong>2. Select Chapters:</strong></label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="chapters" value="ch1"> Chapter 1</label>
+                    <label><input type="checkbox" name="chapters" value="ch2"> Chapter 2</label>
+                    <label><input type="checkbox" name="chapters" value="ch3"> Chapter 3</label>
+                    <label><input type="checkbox" name="chapters" value="ch4"> Chapter 4</label>
+                </div>
+            </div>
 
-            <fieldset>
-                <legend>Select Paper Type:</legend>
-                <label><input type="radio" name="type" value="objective" checked> Objective</label>
-                <label><input type="radio" name="type" value="subjective"> Subjective</label>
-                <label><input type="radio" name="type" value="both"> Both</label>
-            </fieldset>
+            <!-- Paper Type -->
+            <div class="form-section">
+                <label><strong>3. Select Paper Type:</strong></label>
+                <div class="radio-group">
+                    <label><input type="radio" name="type" value="objective" checked> Objective Only</label>
+                    <label><input type="radio" name="type" value="subjective"> Subjective Only</label>
+                    <label><input type="radio" name="type" value="both"> Both</label>
+                </div>
+            </div>
 
-            <button type="submit">Generate Paper</button>
+            <!-- Generate Button -->
+            <div class="form-section">
+                <button type="submit" class="generate-btn">Generate Paper 📄</button>
+            </div>
         </form>
     </div>
 
