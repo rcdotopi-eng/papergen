@@ -1,50 +1,96 @@
+/* ===== Global Styles ===== */
 body {
-    font-family: 'Arial', sans-serif;
-    background: #f7f7f7;
+    font-family: "Times New Roman", Times, serif;
+    background-color: #f8f8f8;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    max-width: 600px;
-    margin: 40px auto;
-    background: #fff;
-    padding: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    border-radius: 8px;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 25px;
     color: #333;
 }
 
-form label {
-    display: block;
-    margin: 10px 0;
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Header ===== */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+}
+
+/* ===== Form Styles ===== */
+form label, form legend {
     font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+form select, form input[type="text"], form input[type="number"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
 }
 
 fieldset {
-    margin: 15px 0;
-    padding: 10px;
     border: 1px solid #ccc;
+    padding: 15px 20px;
+    margin-bottom: 20px;
     border-radius: 6px;
 }
 
-button {
+fieldset legend {
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+fieldset label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+/* ===== Radio & Checkbox ===== */
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* ===== Button ===== */
+button[type="submit"] {
     display: block;
     width: 100%;
-    padding: 12px;
-    background: #007bff;
-    color: white;
+    background-color: #007BFF;
+    color: #fff;
     font-size: 16px;
+    padding: 12px 0;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background: #0056b3;
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 30px 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
 }
