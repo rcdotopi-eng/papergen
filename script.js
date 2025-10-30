@@ -101,7 +101,7 @@ function generatePaper(subject, selectedChapters, paperType) {
             '3. Write answers clearly and neatly.'
         ];
         instructions.forEach(ins => {
-            const insLines = doc.splitTextToSize(ins, pageWidth - 1.5*margin);
+            const insLines = doc.splitTextToSize(ins, pageWidth - 2*margin);
             doc.text(insLines, margin, y);
             y += insLines.length * 6 + 2;
         });
