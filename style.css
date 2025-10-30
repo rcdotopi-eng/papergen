@@ -1,96 +1,97 @@
-/* ===== Global Styles ===== */
-body {
-    font-family: "Times New Roman", Times, serif;
-    background-color: #f8f8f8;
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    color: #333;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container */
+body {
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 0;
 }
 
 .container {
-    max-width: 700px;
-    margin: 50px auto;
+    background-color: #ffffff;
+    width: 450px;
     padding: 30px 40px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
-/* ===== Header ===== */
+/* Header */
 h1 {
-    text-align: center;
-    font-size: 28px;
-    color: #1a1a1a;
-    margin-bottom: 30px;
-}
-
-/* ===== Form Styles ===== */
-form label, form legend {
+    font-size: 24px;
     font-weight: bold;
-    font-size: 16px;
-    display: block;
-    margin-bottom: 8px;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
-form select, form input[type="text"], form input[type="number"] {
+/* Form Elements */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+select, input[type="text"], input[type="number"], input[type="date"] {
     width: 100%;
     padding: 8px 10px;
-    margin-bottom: 20px;
-    border-radius: 4px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    font-size: 14px;
+    border-radius: 5px;
 }
 
 fieldset {
     border: 1px solid #ccc;
     padding: 15px 20px;
-    margin-bottom: 20px;
-    border-radius: 6px;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
-fieldset legend {
+legend {
     font-weight: bold;
     padding: 0 5px;
 }
 
-fieldset label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: normal;
-    font-size: 14px;
-}
-
-/* ===== Radio & Checkbox ===== */
+/* Checkboxes and Radio Buttons */
 input[type="checkbox"], input[type="radio"] {
     margin-right: 8px;
 }
 
-/* ===== Button ===== */
-button[type="submit"] {
+fieldset label {
     display: block;
-    width: 100%;
-    background-color: #007BFF;
-    color: #fff;
-    font-size: 16px;
-    padding: 12px 0;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+/* Button */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 18px;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #45a049;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-        margin: 30px 10px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+    font-size: 12px;
 }
